@@ -4,7 +4,8 @@ import { Zapatilla } from '../models/zapatilla';
 @Component({
     //Esto es con lo que se le llama en el html
     selector: 'zapatillas',
-    templateUrl: './zapatillas.component.html'
+    templateUrl: './zapatillas.component.html',
+    styleUrls: ['./zapatillas.component.css']
 })
 //La clase convertirla en capitalcase(primera letra de cada palabra en mayus)
 export class ZapatillasComponent implements OnInit{
@@ -52,5 +53,13 @@ export class ZapatillasComponent implements OnInit{
 
     deleteMarca(i: number) {
       this.marcas.splice(i, 1)
+    }
+
+    onBlur() {
+      console.log('Has salido del input')
+    }
+
+    mostrarPalabra() {
+      alert(this.miMarca)
     }
 }
