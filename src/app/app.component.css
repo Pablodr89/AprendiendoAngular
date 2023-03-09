@@ -290,3 +290,6 @@
       visibility: hidden;
     }
   }
+  .active {
+    border: 3px solid yellow;
+  }
