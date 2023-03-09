@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Zapatilla } from '../models/zapatilla';
+import { ZapatillaServie } from '../services/zapatilla.service';
 
 @Component({
     //Esto es con lo que se le llama en el html
     selector: 'zapatillas',
     templateUrl: './zapatillas.component.html',
-    styleUrls: ['./zapatillas.component.css']
+    styleUrls: ['./zapatillas.component.css'],
+    providers: [ZapatillaServie]
 })
 //La clase convertirla en capitalcase(primera letra de cada palabra en mayus)
 export class ZapatillasComponent implements OnInit{
@@ -15,22 +17,16 @@ export class ZapatillasComponent implements OnInit{
     public color: string
     public miMarca: string
 
-    constructor() {
+    constructor(private _zapatillaService: ZapatillaServie) {
       this.titulo = 'Componente de Zapatillas'
-      this.zapatillas = [
-        new Zapatilla('Nano X3', 'Reebok', 'Naranja', 80, true),
-        new Zapatilla('Metcon 8', 'Nike', 'Rojo', 149.99, true),
-        new Zapatilla('Lifter Legacy', 'Reebok', 'Negro', 200.00, true),
-        new Zapatilla('Romaleos', 'Nike', 'Rojo', 99.99, false),
-        new Zapatilla('Run Falcon', 'Adidas', 'Negro', 79.99, true),
-        new Zapatilla('608', 'New Balance', 'Blanco', 49.99, false)
-      ]
       this.marcas = new Array()
       this.color = 'orange'
     }
 
     ngOnInit() {
+      this.zapatillas = this._zapatillaService.getZapatillas()
       console.log(this.zapatillas)
+      alert(this._zapatillaService.getTexto())
       this.getMarcas()
     }
 

@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  public identificado: boolean
+
+  constructor() {
+    this.identificado = false
+  }
+
+  ngOnInit() {
+
+  }
+
+  setLogin() {
+    this.identificado = true
+  }
+
+  unsetLogin() {
+    this.identificado = false
+  }
 }
